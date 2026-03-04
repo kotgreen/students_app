@@ -12,9 +12,8 @@ return new class extends Migration
     public function up(): void
     {
         Schema::table('students', function (Blueprint $table) {
-            $table->date('date_of_birth')->nullable();
-            $table->enum('gender', ['m', 'f'])->default('m');
-            $table->integer('score');
+            $table->softDeletes();
+            //
         });
     }
 
@@ -24,9 +23,7 @@ return new class extends Migration
     public function down(): void
     {
         Schema::table('students', function (Blueprint $table) {
-            $table->dropColumn(('date_of_birth'));
-            $table->dropColumn(('gender'));
-            $table->dropColumn(('score'));
+            //
         });
     }
 };
